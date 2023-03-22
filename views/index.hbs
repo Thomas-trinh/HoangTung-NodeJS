@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        .product {
+            border : 1px solid black;
+            margin : 5% auto;
+            text-align : center;
+        }
+        .product img {
+            height : 100px;
+            width : 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello world</h1>
+    <p>Today is a grateful day</p>
+    <br>
+    <h2>Create Product</h2>
+        <a href="/createProduct">Add-new-product</a>
+        <br>
+    <h2>List of products:</h2>
+    {{#each products}}
+        <div class="product">
+            <p>Product name: {{name}}</p>
+            <p>Product image: </p>
+            <img src="{{picture}}" alt="img" style="width: 450px; height: 400px">
+            <p>Product price: ${{price}}</p>
+            <p>Product description: {{description}}</p>
+            <a href="/editProduct">Edit_product</a>
+            <a href="/deleteProduct" confirm="Are you sure to delete this product?">Delete_product</a>
+        </div>
+    {{/each}}
+</body>
+</html>
