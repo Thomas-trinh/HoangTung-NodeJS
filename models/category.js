@@ -5,23 +5,15 @@ var Schema = mongoose.Schema;
 var mongoDB = 'mongodb+srv://phongpkt:rDDra8qqSuEH2khW@cluster0.jxojykg.mongodb.net/test';
 mongoose.connect(mongoDB);
 
-const ProductSchema = new Schema({
+const CategorySchema = new Schema({
     name: {
         type: String,
-        require: true
-    },
-    picture: {
-        type: String,
-        require: true
-    },
-    price: {
-        type: Number,
-        require: true
+        required: true
     },
     description: {
         type: String
     },
-    category: {type:ObjectId, ref: 'Category'}
+    products: [{type:ObjectId, ref:'Product'}] //khai bao array
 })
 
-module.exports = mongoose.model('Product', ProductSchema);
+module.exports = mongoose.model('Category', CategorySchema)

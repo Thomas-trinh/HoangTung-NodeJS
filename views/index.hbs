@@ -18,6 +18,12 @@
     </style>
 </head>
 <body>
+    <div class="nav">
+        <div class="navbar">
+            <a href="/">Index</a>
+            <a href="/viewCategory">Category</a>
+        </div>
+    </div>
     <h1>Hello world</h1>
     <p>Today is a grateful day</p>
     <br>
@@ -28,6 +34,7 @@
     {{#each products}}
         <div class="product">
             <p>Product name: {{name}}</p>
+            <p>Category: {{category.name}}</p>
             <p>Product image: </p>
             <img src="{{picture}}" alt="img" style="width: 450px; height: 400px">
             <p>Product price: ${{price}}</p>
