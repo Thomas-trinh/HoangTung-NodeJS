@@ -34,13 +34,25 @@
     {{#each products}}
         <div class="product">
             <p>Product name: {{name}}</p>
-            <p>Category: {{category.name}}</p>
+            <p>Category: {{categorys.name}}</p>
             <p>Product image: </p>
             <img src="{{picture}}" alt="img" style="width: 450px; height: 400px">
             <p>Product price: ${{price}}</p>
             <p>Product description: {{description}}</p>
             <a href="/editProduct?id={{id}}">Edit_product</a>
             <a href="/deleteProduct?id={{id}}" confirm="Are you sure to delete this product?">Delete_product</a>
+        </div>
+        <div class="comment">
+            <div class="createComment">
+                <form action="" method="post">
+
+                </form>
+            </div>
+            <div class="showComment">
+                {{#each comment}}
+                    {{content}}
+                {{/each}}
+            </div>
         </div>
     {{/each}}
 </body>

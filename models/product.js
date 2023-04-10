@@ -21,7 +21,8 @@ const ProductSchema = new Schema({
     description: {
         type: String
     },
-    category: {type:ObjectId, ref: 'Category'}
+    category: {type:ObjectId, ref: 'Category'},
+    comment: [{}]
 })
 
 module.exports = mongoose.model('Product', ProductSchema);

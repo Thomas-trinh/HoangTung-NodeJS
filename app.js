@@ -25,7 +25,7 @@ mongoose
 
 //duong dan trang index
 app.get('/', async (req, res) => {
-    const product = await productModel.find().populate('category');
+    const product = await productModel.find().populate('categorys');
     res.render('index', {'products' : product})
 })
 
