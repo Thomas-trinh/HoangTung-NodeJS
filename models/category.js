@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var {ObjectId} = mongoose.Schema.Types
 var Schema = mongoose.Schema;
 
-var mongoDB = 'mongodb+srv://phongpkt:rDDra8qqSuEH2khW@cluster0.jxojykg.mongodb.net/test';
+var mongoDB = 'mongodb+srv://Thomas-trinh:Thomas-456@cluster0.rkjr8qq.mongodb.net/test';
 mongoose.connect(mongoDB);
 
 const CategorySchema = new Schema({

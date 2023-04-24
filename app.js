@@ -1,12 +1,13 @@
 const express = require('express')
 const app = express()
-const port = 5000
+const port = 8000
 
 const mongoose = require('mongoose')
-const URL = "mongodb+srv://phongpkt:rDDra8qqSuEH2khW@cluster0.jxojykg.mongodb.net/test";
+const URL = "mongodb+srv://Thomas-trinh:Thomas-456@cluster0.rkjr8qq.mongodb.net/test";
 
 const productModel = require('./models/product');
 const catModel = require('./models/category');
+const comModel = require('./models/comment');
 
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({extended: true}))
@@ -25,7 +26,9 @@ mongoose
 
 //duong dan trang index
 app.get('/', async (req, res) => {
-    const product = await productModel.find().populate('categorys');
+    const product = await productModel.find()
+    .populate('category')
+    .populate('comment');
     res.render('index', {'products' : product})
 })
 
@@ -140,7 +143,28 @@ app.get('/deleteCategory?:id', async (req, res) => {
     res.redirect('/')
 })
 
+// Comment section 
+app.get('/createComment?:id',async (req, res) => {
+    const id = req.query.id
+    var product = await productModel.findById(id)
+    res.render('comments/create-comment', {'product': product})
+})
+app.post('/createComment',async (req, res) => {
+    const ProductId = req.body.id
+    const Publisher = req.body.Publisher
+    const Comments = req.body.comment
+    const comment = new comModel({'products':ProductId,'Publisher':Publisher,'comment': Comments})
+    comment.save()
+    
+    await productModel.findById(ProductId)
+    .updateOne
+    ({
+        $push:{comment:comment.id}
+    })
+    res.redirect('/')
+})
+
 //duong dan den trang localhost
 app.listen(port, () => {
-    console.log('localhost:5000')
+    console.log('localhost:8000')
 })
